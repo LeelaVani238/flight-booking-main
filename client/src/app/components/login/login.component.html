@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="login-container">
+        <img src="https://img.freepik.com/premium-vector/online-registration-sign-up-with-man-standing-near-user-interface_268404-96.jpg" alt="" class="image" />
+        <div class="card">
+            <form [formGroup]="regForm" #r="ngForm" (ngSubmit)="onSubmit(r.value)" class="form">
+                <b><h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:red;"class="heading text-center"><u>Login</u></h1></b>
+                <div class="form-group mb-2">
+                    <b style="color:blue;"><label for="email">Email Id</label></b>
+                    <input placeholder="Enter your email" type="text" class="form-control" id="email" formControlName="email" required>
+                    <div *ngIf="regForm.controls['email'].touched && regForm.controls['email']?.['errors']">
+                        <div *ngIf="regForm.controls['email']?.['errors']?.['required']" class="error-message text-danger">
+                            Email is required for login 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <b style="color:blue;"><label for="password">Password</label></b>
+                    <input placeholder="Enter password" type="password" class="form-control" id="password" formControlName="password" required>
+                    <div *ngIf="regForm.controls['password'].touched && regForm.controls['password']?.['errors']">
+                        <div *ngIf="regForm.controls['password']?.['errors']?.['required']"
+                            class="error-message text-danger">
+                            Password is required for login
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4 w-100" [disabled]="regForm.invalid">Sign In</button>
+                <div class="mt-2"><a routerLink="/register" class="mt-2">Don't you have an account? click here</a></div>
+                <a routerLink="/airline-login" class="mt-4">Airline? Click Here!!!</a>
+            </form>
+        </div>
+    </div>
+</div>
